@@ -1,9 +1,6 @@
 require 'test_helper'
 
 class CandidateTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
 
   test "must have name" do
     assert Candidate.create!(name: "first tester", hometown: "home", district: "13", party: "indep")
