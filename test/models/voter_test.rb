@@ -16,4 +16,16 @@ class VoterTest < ActiveSupport::TestCase
     end
   end
 
+  test "cannot enter duplicate names" do
+    assert Voter.create!(name: "first test", party: "indep")
+    assert_raise ActiveRecord::RecordInvalid do
+      Voter.create!(name: "first test", party: "indep")
+    end
+  end
+
+  test "row was added to table" do
+    test_voter = Voter.create!(name: "first test", party: "indep")
+    assert_equal test_voter, Voter.last
+  end
+
 end

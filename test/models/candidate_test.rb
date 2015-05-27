@@ -30,5 +30,16 @@ class CandidateTest < ActiveSupport::TestCase
     end
   end
 
+  test "created row in table" do
+    assert president = Candidate.create!(name: "first tester", hometown: "home", district: "13", party: "indep")
+    assert_equal president, Candidate.last
+  end
+
+  test "cannot create duplicate names" do
+    assert Candidate.create!(name: "first tester", hometown: "home", district: "13", party: "indep")
+    assert_raises ActiveRecord::RecordInvalid do
+      Candidate.create!(name: "first tester", hometown: "home", district: "13", party: "indep")
+    end
+  end
 
 end
