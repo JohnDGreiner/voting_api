@@ -16,4 +16,11 @@ class VoteTest < ActiveSupport::TestCase
     end
   end
 
+  test "row is created in table" do
+    test_candidate = Candidate.create!(name: "first tester", hometown: "home", district: "13", party: "indep")
+    test_voter = Voter.create!(name: "first test", party: "indep")
+    assert test_vote = Vote.create!(candidate_id: test_candidate.id, voter_id: test_voter.id)
+    assert_equal test_vote, Vote.last
+  end
+
 end
