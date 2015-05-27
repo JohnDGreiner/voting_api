@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
 
   get 'votes/index'
+  post 'votes/create'
+  post 'votes/update'
 
   get 'candidates/index'
   get 'candidates/show'
