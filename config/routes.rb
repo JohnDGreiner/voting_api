@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
   get 'voters/show'
   post 'voters/create'
-
+  patch 'voters/update'
 
   get 'votes/index'
   post 'votes/create'
-  post 'votes/update'
+
 
   get 'candidates/index'
   get 'candidates/show'
