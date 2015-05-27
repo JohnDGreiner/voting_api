@@ -36,10 +36,9 @@ class CandidateTest < ActiveSupport::TestCase
   end
 
   test "cannot create duplicate names" do
-    assert Candidate.create!(name: "first tester", hometown: "home", district: "13", party: "indep")
-    assert_raises ActiveRecord::RecordInvalid do
-      Candidate.create!(name: "first tester", hometown: "home", district: "13", party: "indep")
-    end
+    Candidate.create!(name: "first tester", hometown: "home", district: "13", party: "indep")
+    duplicate = Candidate.new(name: "first tester", hometown: "home", district: "13", party: "indep")
+    refute duplicate.save
   end
 
 end
