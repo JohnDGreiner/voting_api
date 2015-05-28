@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   get 'votes/index'
   post 'votes/create'
+  delete 'votes/remove'
 
 
   get 'candidates/index'

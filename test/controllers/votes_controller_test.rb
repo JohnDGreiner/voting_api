@@ -15,4 +15,12 @@ class VotesControllerTest < ActionController::TestCase
     assert_equal test_candidate.id, Vote.last.candidate_id
   end
 
+  test "cannot destroy if voter exists" do
+    candidate = Candidate.create!(name: "Next President", hometown: "Somewhere", district: "13", party: "independent")
+    voter = Voter.create!(name: "Larry Voter", party: "Green")
+    vote = Vote.create!(candidate_id: candidate.id, voter_id: voter.id)
+    delete :remove, {id: vote.id}
+    refute_equal vote.id, Vote.last.id
+  end
+
 end
