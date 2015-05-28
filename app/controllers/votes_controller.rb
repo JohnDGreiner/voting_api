@@ -21,7 +21,7 @@ class VotesController < ApplicationController
   private
 
     def restrict_access
-      api_token = Voter.find_by_api_token(params[api_token])
+      api_token = Voter.find_by_api_token(params[:api_token])
       head :unauthorized unless api_token
     end
 
