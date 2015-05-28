@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 20150528030358) do
     t.string   "party"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string   "Api_Token"
+    t.string   "api_token"
   end
 
   create_table "votes", force: :cascade do |t|
