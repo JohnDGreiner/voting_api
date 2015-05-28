@@ -1,5 +1,5 @@
 class VotesController < ApplicationController
-
+  before_filter :restrict_access
   def index
     render json: Vote.all
   end
@@ -18,4 +18,12 @@ class VotesController < ApplicationController
     render json: "Vote Deleted"
   end
 
-end
+  private
+
+    def restrict_access
+      api_token = Voter.find_by_api_token(params[api_token])
+      head :unauthorized unless api_token
+    end
+
+
+  end
